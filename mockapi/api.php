@@ -14,7 +14,8 @@ if ($accept !== "application/json") {
         "responseMessage"   => "method not allowed"
     );
 
-    echo json_encode($response);
+    $callback = $req->get("callback");
+    echo $callback . '(' . json_encode($response) . ');';
     } catch (Exception $e) {
 
     }
@@ -28,7 +29,7 @@ $app->get('/hello/:name', function ($name) {
 });
 
 //:data_inizio/:data_fine:/:tipo_barca/:lunghezza/:larghezza/:pescaggio/:servizi_aggiuntivi
-$app->get('/getPrice', function () {
+$app->get('/getPrice', function () use ($req){
 
     $response = array(
         "responseCode"      => "OK",
@@ -36,11 +37,13 @@ $app->get('/getPrice', function () {
         "data"              => array("prezzo" => "22,22€")
     );
 
-    echo json_encode($response);
+    $callback = $req->get("callback");
+    echo $callback . '(' . json_encode($response) . ');';
+
 });
 
 
-$app->get('/requestReservation', function () {
+$app->get('/requestReservation', function ()  use ($req){
 
     $response = array(
         "responseCode"      => "OK",
@@ -48,21 +51,25 @@ $app->get('/requestReservation', function () {
         "data"              => array("codice_prenotazione" => "AMSDJDF89823NN4")
     );
 
-    echo json_encode($response);
+    $callback = $req->get("callback");
+    echo $callback . '(' . json_encode($response) . ');';
+
 });
 
 
-$app->get('/confirmReservation', function () {
+$app->get('/confirmReservation', function () use ($req) {
 
     $response = array(
         "responseCode"      => "OK",
         "responseMessage"   => "Everything fine",
     );
 
-    echo json_encode($response);
+    $callback = $req->get("callback");
+    echo $callback . '(' . json_encode($response) . ');';
+
 });
 
-$app->get('/getReservations', function () {
+$app->get('/getReservations', function () use ($req) {
 
     $response = array(
         "responseCode"      => "OK",
@@ -124,11 +131,13 @@ $app->get('/getReservations', function () {
         )
     );
 
-    echo json_encode($response);
+    $callback = $req->get("callback");
+    echo $callback . '(' . json_encode($response) . ');';
+
 });
 
 
-$app->get('/getReservationInfo', function () {
+$app->get('/getReservationInfo', function () use ($req) {
 
     $response = array(
         "responseCode"      => "OK",
@@ -149,12 +158,14 @@ $app->get('/getReservationInfo', function () {
         )
     );
 
-    echo json_encode($response);
+    $callback = $req->get("callback");
+    echo $callback . '(' . json_encode($response) . ');';
+
 });
 
 
 // a seconda del parametro restituisce il codice di errore o meno (il parametro code non è previsto nelle api ufficiali)
-$app->get('/retrievePassword(/:code)', function ($code = 0) {
+$app->get('/retrievePassword(/:code)', function ($code = 0) use ($req) {
     if ($code == 1) {
         $response = array(
             "responseCode"      => "200",
@@ -167,11 +178,13 @@ $app->get('/retrievePassword(/:code)', function ($code = 0) {
         );
     }
 
-    echo json_encode($response);
+    $callback = $req->get("callback");
+    echo $callback . '(' . json_encode($response) . ');';
+
 });
 
 // a seconda del parametro restituisce il codice di errore o meno (il parametro code non è previsto nelle api ufficiali)
-$app->get('/login(/:code)', function ($code = 0) {
+$app->get('/login(/:code)', function ($code = 0) use ($req) {
     if ($code == 1) {
         $response = array(
             "responseCode"      => "200",
@@ -189,11 +202,13 @@ $app->get('/login(/:code)', function ($code = 0) {
         );
     }
 
-    echo json_encode($response);
+    $callback = $req->get("callback");
+    echo $callback . '(' . json_encode($response) . ');';
+
 });
 
 // a seconda del parametro restituisce il codice di errore o meno (il parametro code non è previsto nelle api ufficiali)
-$app->get('/register(/:code)', function ($code = 0) {
+$app->get('/register(/:code)', function ($code = 0) use ($req) {
     if ($code == 1) {
         $response = array(
             "responseCode"      => "201", // created
@@ -207,22 +222,26 @@ $app->get('/register(/:code)', function ($code = 0) {
         );
     }
 
-    echo json_encode($response);
+    $callback = $req->get("callback");
+    echo $callback . '(' . json_encode($response) . ');';
+
 });
 
 
-$app->get('/logout', function ($code = 0) {
+$app->get('/logout', function ($code = 0) use ($req) {
 
     $response = array(
         "responseCode"      => "200",
         "responseMessage"   => "Logout effettuato con successo",
     );
 
-    echo json_encode($response);
+    $callback = $req->get("callback");
+    echo $callback . '(' . json_encode($response) . ');';
+
 });
 
 
-$app->get('/getUserInfo', function () {
+$app->get('/getUserInfo', function () use ($req) {
 
     $response = array(
         "responseCode"      => "200",
@@ -243,7 +262,9 @@ $app->get('/getUserInfo', function () {
         )
     );
 
-    echo json_encode($response);
+    $callback = $req->get("callback");
+    echo $callback . '(' . json_encode($response) . ');';
+
 });
 
 $app->run();
