@@ -192,6 +192,25 @@ $app->get('/login(/:code)', function ($code = 0) {
     echo json_encode($response);
 });
 
+// a seconda del parametro restituisce il codice di errore o meno (il parametro code non è previsto nelle api ufficiali)
+$app->get('/register(/:code)', function ($code = 0) {
+    if ($code == 1) {
+        $response = array(
+            "responseCode"      => "201", // created
+            "responseMessage"   => "Una email è stata inviata all’indirizzo mail indicato in fase di registrazione...",
+        );
+    } else  {
+        $response = array(
+            "responseCode"      => "400", // bad request
+            "responseMessage"   => "mpossibile registrarsi con l’indirizzo email specificato...è già presente in archivio",
+
+        );
+    }
+
+    echo json_encode($response);
+});
+
+
 $app->get('/logout', function ($code = 0) {
 
     $response = array(
