@@ -7,7 +7,7 @@ $req = $app->request;
 $accept = $app->request->headers->get('ACCEPT');
 
 //die ($accept);
-if ($accept !== "application/json") {
+/*if ($accept !== "application/json") {
     try {
         $response = array(
         "responseCode"      => "403",
@@ -21,7 +21,7 @@ if ($accept !== "application/json") {
     }
     die;
 }
-
+*/
 
 
 $app->get('/hello/:name', function ($name) {
