@@ -32,7 +32,7 @@ $app->get('/hello/:name', function ($name) {
 $app->get('/getPrice', function () use ($req){
 
     $response = array(
-        "responseCode"      => "OK",
+        "responseCode"      => "200",
         "responseMessage"   => "Test Message",
         "data"              => array("prezzo" => "22,22€")
     );
@@ -46,7 +46,7 @@ $app->get('/getPrice', function () use ($req){
 $app->get('/requestReservation', function ()  use ($req){
 
     $response = array(
-        "responseCode"      => "OK",
+        "responseCode"      => "200",
         "responseMessage"   => "Test Message",
         "data"              => array("codice_prenotazione" => "AMSDJDF89823NN4")
     );
@@ -60,7 +60,7 @@ $app->get('/requestReservation', function ()  use ($req){
 $app->get('/confirmReservation', function () use ($req) {
 
     $response = array(
-        "responseCode"      => "OK",
+        "responseCode"      => "200",
         "responseMessage"   => "Everything fine",
     );
 
@@ -72,7 +72,7 @@ $app->get('/confirmReservation', function () use ($req) {
 $app->get('/getReservations', function () use ($req) {
 
     $response = array(
-        "responseCode"      => "OK",
+        "responseCode"      => "200",
         "responseMessage"   => "Everything fine",
         "data"              => array(
             array(
@@ -140,7 +140,7 @@ $app->get('/getReservations', function () use ($req) {
 $app->get('/getReservationInfo', function () use ($req) {
 
     $response = array(
-        "responseCode"      => "OK",
+        "responseCode"      => "200",
         "responseMessage"   => "Everything fine",
         "data"              => array(
 
@@ -208,7 +208,7 @@ $app->get('/login(/:code)', function ($code = 0) use ($req) {
 });
 
 // a seconda del parametro restituisce il codice di errore o meno (il parametro code non è previsto nelle api ufficiali)
-$app->get('/register(/:code)', function ($code = 0) use ($req) {
+$app->get('/register/:nome/:cognome(/:code)', function ($nome, $cognome, $code = 0) use ($req) {
     if ($code == 1) {
         $response = array(
             "responseCode"      => "201", // created
@@ -247,13 +247,14 @@ $app->get('/getUserInfo', function () use ($req) {
         "responseCode"      => "200",
         "responseMessage"   => "Logout effettuato con successo",
         "data"              => array(
-            "nome"         => "Carlo",
-	        "cognome"      =>  "Giacomi",
-	        "indirizzo"    =>  "via XX settembre 77",
-	        "ultimo_login" => "20-11-2015T15:00:00",
-	        "avatar"       => "http://mydomain.it/avatar.jpg",
-	        "boat"         => array(
-                "pescasggio" => "11",
+            "nome"          => "Carlo",
+	        "cognome"       =>  "Giacomi",
+	        "email"         =>  "test@test.com",
+	        "indirizzo"     =>  "via XX settembre 77",
+	        "ultimo_login"  => "20-11-2015T15:00:00",
+	        "avatar"        => "http://mydomain.it/avatar.jpg",
+	        "boat"          => array(
+                "pescaggio"  => "11",
                 "lunghezza"  => "23",
                 "larghezza"  => "7",
                 "tipo_barca" => "A",
