@@ -222,8 +222,8 @@ $app->post('/register(/:code)', function ( $code = 0) use ($req) {
         );
     }
 
-    $callback = $req->get("callback");
-    echo $callback . '(' . json_encode($response) . ');';
+
+    echo  json_encode($response);
 
 });
 
