@@ -227,6 +227,26 @@ $app->post('/register(/:code)', function ( $code = 0) use ($req) {
 
 });
 
+// permette all'utente di aggiornare il proprio profilo modificando i dati della barca
+$app->post('/updateProfile', function ( ) use ($req) {
+    $response = array(
+        "responseCode"      => "200", // ok
+        "responseMessage"   => "Il tuo profilo è stato aggiornato con successo",
+    );
+    echo  json_encode($response);
+});
+
+// permette all'utente di aggiornare il proprio profilo modificando i dati della barca
+$app->get('/updateProfile', function ( ) use ($req) {
+    $response = array(
+        "responseCode"      => "200", // ok
+        "responseMessage"   => "Il tuo profilo è stato aggiornato con successo",
+    );
+
+    $callback = $req->get("callback");
+    echo $callback . '(' . json_encode($response) . ');';
+});
+
 // a seconda del parametro restituisce il codice di errore o meno (il parametro code non è previsto nelle api ufficiali)
 $app->get('/register(/:code)', function ( $code = 0) use ($req) {
     if ($code == 1) {
