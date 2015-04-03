@@ -33,7 +33,7 @@ $app->get('/getPrice', function () use ($req){
 
     $response = array(
         "responseCode"      => "200",
-        "responseMessage"   => "Test Message",
+        "responseMessage"   => "API_GET_PRICE_200",
         "data"              => array("prezzo" => "22,22€")
     );
 
@@ -47,7 +47,7 @@ $app->get('/requestReservation', function ()  use ($req){
 
     $response = array(
         "responseCode"      => "200",
-        "responseMessage"   => "Test Message",
+        "responseMessage"   => "API_REQUEST_RESERVATION_200",
         "data"              => array("codice_prenotazione" => "AMSDJDF89823NN4")
     );
 
@@ -61,7 +61,7 @@ $app->get('/confirmReservation', function () use ($req) {
 
     $response = array(
         "responseCode"      => "200",
-        "responseMessage"   => "Everything fine",
+        "responseMessage"   => "API_CONFIRM_RESERVATION_200",
     );
 
     $callback = $req->get("callback");
@@ -73,7 +73,7 @@ $app->get('/getReservations', function () use ($req) {
 
     $response = array(
         "responseCode"      => "200",
-        "responseMessage"   => "Everything fine",
+        "responseMessage"   => "API_GET_RESERVATIONS_200",
         "data"              => array(
             array(
                     "codice_prenotazione" =>   "ASDKASMKMK7346",
@@ -141,7 +141,7 @@ $app->get('/getReservationInfo', function () use ($req) {
 
     $response = array(
         "responseCode"      => "200",
-        "responseMessage"   => "Everything fine",
+        "responseMessage"   => "API_GET_RESERVATION_INFO_200",
         "data"              => array(
 
             "codice_prenotazione" =>   "ASDKASMKMK73466734674",
@@ -169,12 +169,12 @@ $app->get('/retrievePassword(/:code)', function ($code = 0) use ($req) {
     if ($code == 1) {
         $response = array(
             "responseCode"      => "200",
-            "responseMessage"   => "Everything fine"
+            "responseMessage"   => "API_RETRIEVE_PASSWORD_200"
         );
     } else  {
         $response = array(
             "responseCode"      => "404",
-            "responseMessage"   => "Indirizzo email inesistente"
+            "responseMessage"   => "API_RETRIEVE_PASSWORD_404"
         );
     }
 
@@ -188,7 +188,7 @@ $app->get('/login(/:code)', function ($code = 0) use ($req) {
     if ($code == 1) {
         $response = array(
             "responseCode"      => "200",
-            "responseMessage"   => "Everything fine",
+            "responseMessage"   => "API_LOGIN_200",
             "data"              => array(
                     "session_token" => "XXXXXXXX",
                     "user_id"       => "188772"
@@ -197,7 +197,7 @@ $app->get('/login(/:code)', function ($code = 0) use ($req) {
     } else  {
         $response = array(
             "responseCode"      => "404",
-            "responseMessage"   => "Impossibile autenticarsi. Username e/o password non corretti",
+            "responseMessage"   => "API_LOGIN_404",
 
         );
     }
@@ -212,12 +212,12 @@ $app->post('/register(/:code)', function ( $code = 0) use ($req) {
     if ($code == 1) {
         $response = array(
             "responseCode"      => "201", // created
-            "responseMessage"   => "Una email è stata inviata all’indirizzo mail indicato in fase di registrazione...",
+            "responseMessage"   => "API_REGISTER_201",
         );
     } else  {
         $response = array(
             "responseCode"      => "400", // bad request
-            "responseMessage"   => "mpossibile registrarsi con l’indirizzo email specificato...è già presente in archivio",
+            "responseMessage"   => "API_REGISTER_400",
 
         );
     }
@@ -231,7 +231,7 @@ $app->post('/register(/:code)', function ( $code = 0) use ($req) {
 $app->post('/updateProfile', function ( ) use ($req) {
     $response = array(
         "responseCode"      => "200", // ok
-        "responseMessage"   => "Il tuo profilo è stato aggiornato con successo",
+        "responseMessage"   => "API_UPDATE_PROFILE_200",
     );
     echo  json_encode($response);
 });
@@ -240,7 +240,7 @@ $app->post('/updateProfile', function ( ) use ($req) {
 $app->get('/updateProfile', function ( ) use ($req) {
     $response = array(
         "responseCode"      => "200", // ok
-        "responseMessage"   => "Il tuo profilo è stato aggiornato con successo",
+        "responseMessage"   => "API_UPDATE_PROFILE_200",
     );
 
     $callback = $req->get("callback");
@@ -252,12 +252,12 @@ $app->get('/register(/:code)', function ( $code = 0) use ($req) {
     if ($code == 1) {
         $response = array(
             "responseCode"      => "201", // created
-            "responseMessage"   => "Una email è stata inviata all’indirizzo mail indicato in fase di registrazione...",
+            "responseMessage"   => "API_REGISTER_201",
         );
     } else  {
         $response = array(
             "responseCode"      => "400", // bad request
-            "responseMessage"   => "mpossibile registrarsi con l’indirizzo email specificato...è già presente in archivio",
+            "responseMessage"   => "API_REGISTER_400",
 
         );
     }
@@ -272,7 +272,7 @@ $app->get('/logout', function ($code = 0) use ($req) {
 
     $response = array(
         "responseCode"      => "200",
-        "responseMessage"   => "Logout effettuato con successo",
+        "responseMessage"   => "APILOGOUT_200",
     );
 
     $callback = $req->get("callback");
@@ -285,7 +285,7 @@ $app->get('/getUserInfo', function () use ($req) {
 
     $response = array(
         "responseCode"      => "200",
-        "responseMessage"   => "Logout effettuato con successo",
+        "responseMessage"   => "API_GET_USER_INFO_200",
         "data"              => array(
             "nome"          => "Carlo",
 	        "cognome"       =>  "Giacomi",
